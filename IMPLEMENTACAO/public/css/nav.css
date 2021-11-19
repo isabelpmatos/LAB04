@@ -1,0 +1,50 @@
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color:white !important;
+    margin-left: 100px;
+}
+
+nav{ 
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif !important; 
+    background: #82b4cc; 
+    border-style: solid; 
+    border-color: white; 
+} 
+
+.nav-list li a, .nav-list li .logout-button{ 
+
+    letter-spacing: 3px; 
+    font-size: 15px; 
+    color:white !important;
+    border-width: 3px;
+    border-style: solid; 
+    border-color: white; 
+    margin-left: 5px; 
+    margin-right: 5px; 
+} 
+ 
+.nav-list li a:hover, .nav-list li .logout-button:hover{ 
+    color:rgb(18, 34, 78) !important; 
+}  
+
+.logout-form{
+    padding: 0;
+}
+
+.logout-button{
+    appearance: none;
+    background: transparent;
+    display: inline;
+    margin: 0;
+    cursor: pointer;
+}
+
+@media (max-width:992px){
+    .nav-list li a, .nav-list li .logout-button{
+        border-style: none;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
