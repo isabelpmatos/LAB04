@@ -22,6 +22,10 @@ app.get("/", (req, res) => {
     res.render("home")
 })
 
+app.get("/empresasParceiras", (req, res) =>{
+    res.render("empresasParceiras")
+})
+
 app.listen(5002, () => {
     console.log("Server is started")
 })
