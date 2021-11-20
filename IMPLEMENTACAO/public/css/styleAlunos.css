@@ -1,0 +1,13 @@
+body{
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif !important;
+    background-image: url(../imgs/fullhd.png);
+    background-size: cover;
+}
+
+.btn{
+    background-color: #1A759F;
+    border-color: white;
+    border-style: solid;
+    border-width: 3px;
+    margin-left: 1200px;
+}

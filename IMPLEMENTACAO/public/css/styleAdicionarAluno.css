@@ -1,0 +1,18 @@
+body{
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif !important;
+    background-image: url(../imgs/fullhd.png);
+    background-size: cover;
+}
+
+.btn{
+    background-color: #1A759F;
+}
+
+.btn:hover{
+    background-color: #1A759F;
+}
+
+.container{
+    margin-top: 80px;
+    margin-left: 400px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUCoins - Adicionar novo aluno</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styleAdicionarAluno.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="icon" type="image/png" href="../public/imgs/coin.png">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a href="/home">
+        <img src="/imgs/coin.png" style="width: 50px;">
+      </a>
+      <a class="navbar-brand logo" href="/home">PUCoins</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav-list">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <form>
+
+    <div class="container">
+
+    <div class="col-sm-12">
+    <div class="col-sm-6" style="align-self: center;">
+    <div class="card">
+        <h5 class="card-header">Adicionar novo aluno</h5>
+        
+        <div class="form-group">
+        <label for="codigoAluno" style="padding: 5px;">Código</label>
+        <input type="number" class="form-control" id="codigoAluno" placeholder="Código do aluno">
+        </div>
+        <div class="form-group">
+            <label for="nomeAluno" style="padding: 5px;">Nome do aluno</label>
+            <input type="text" class="form-control" id="nomeAluno" placeholder="Nome do aluno">
+        </div>
+        <div class="form-group">
+        <label for="senhaAluno" style="padding: 5px;">Senha</label>
+        <input type="password" class="form-control" id="senhaAluno" placeholder="Senha">
+        </div>
+        
+        <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
+            <button type="submit" class="btn btn-success">Adicionar</button>
+        </div>
+    </div>
+    </div>
+    </div>
+  </form>
+</div>
+</body>
+
+</html>
