@@ -45,3 +45,19 @@ app.get("/consultarEmpresa", (req, res) =>{
 app.listen(5002, () => {
     console.log("Server is started")
 })
+
+app.get("/alunos", (req, res) =>{
+    res.render("alunos");
+})
+
+app.get("/adicionarAluno", (req, res) =>{
+    res.render("adicionarAluno");
+})
+
+app.get("/editarAluno", (req, res) =>{
+    res.render("editarAluno");
+})
+
+app.get("/consultarAluno", (req, res) =>{
+    res.render("consultarAluno");
+})
