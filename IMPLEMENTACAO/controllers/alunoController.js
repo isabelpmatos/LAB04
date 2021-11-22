@@ -90,6 +90,30 @@ router.post("/editarAluno", (req, res) => {
     });
 })
 
+router.post("/alunos/delete", (req, res) => {
+    var id = req.body.id;
+
+    if (id != undefined) {
+
+        if (!isNaN(id)) { //id é numerico ou não
+
+            Aluno.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/alunos");
+            })
+
+        } else {
+            res.redirect("/alunos");
+        }
+
+    } else {
+        res.redirect("/alunos");
+    }
+});
+
 router.get("/consultarAluno", (req, res) => {
     res.render("consultarAluno");
 })

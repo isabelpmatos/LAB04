@@ -70,6 +70,30 @@ router.post("/editarEmpresa", (req, res) => {
     });
 })
 
+router.post("/empresas/delete", (req, res) => {
+    var id = req.body.id;
+
+    if (id != undefined) {
+
+        if (!isNaN(id)) { //id é numerico ou não
+
+            Empresa.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/empresasParceiras");
+            })
+
+        } else {
+            res.redirect("/empresasParceiras");
+        }
+
+    } else {
+        res.redirect("/empresasParceiras");
+    }
+});
+
 router.get("/consultarEmpresa", (req, res) => {
     res.render("consultarEmpresa");
 })
