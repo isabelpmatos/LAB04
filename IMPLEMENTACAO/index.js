@@ -19,7 +19,7 @@ connection
     })
 
 app.get("/", (req, res) => {
-    res.render("home")
+    res.render("cadastro")
 })
 
 app.get("/home", (req, res) => {
