@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Aluno = require("../models/aluno");
+const Instituicao = require("../models/instituicao");
 
 router.get("/alunos", (req, res) => {
     Aluno.findAll().then(alunos => {
@@ -10,7 +11,9 @@ router.get("/alunos", (req, res) => {
 })
 
 router.get("/adicionarAluno", (req, res) => {
-    res.render("adicionarAluno");
+    Instituicao.findAll().then(instituicoes => {
+        res.render("adicionarAluno", { instituicoes: instituicoes });
+    })
 })
 
 router.post("/salvarAluno", (req, res) => {
@@ -21,6 +24,7 @@ router.post("/salvarAluno", (req, res) => {
     var rg = req.body.rg;
     var endereco = req.body.endereco;
     var curso = req.body.curso;
+    var instituicao = req.body.instituicao;
 
     if (Aluno != undefined) {
 
@@ -31,7 +35,8 @@ router.post("/salvarAluno", (req, res) => {
             cpf: cpf,
             rg: rg,
             endereco: endereco,
-            curso, curso
+            curso, curso,
+            instituicaoId: instituicao
 
         }).then(() => {
             res.redirect("/alunos");
@@ -46,14 +51,25 @@ router.get("/alunos/edit/:id", (req, res) => {
 
     var id = req.params.id;
 
-    Aluno.findByPk(id).then(aluno => {
+    Aluno.findOne({
+        where: {
+            id: id,
+        }, 
+        include: [{
+            model: Instituicao,
+        }]
+    }).then(aluno => {
 
         if (isNaN(id)) {
             res.redirect("/alunos");
         }
 
         if (aluno != undefined) {
-            res.render("editarAluno", { aluno: aluno });
+            
+            Instituicao.findAll().then(instituicoes => {
+                res.render("editarAluno", { aluno: aluno, instituicoes: instituicoes });
+            })
+
         } else {
             res.redirect("/alunos");
         }
@@ -73,6 +89,7 @@ router.post("/editarAluno", (req, res) => {
     var rg = req.body.rg;
     var endereco = req.body.endereco;
     var curso = req.body.curso;
+    var instituicao = req.body.instituicao;
 
     Aluno.update({
         nome: nome,
@@ -80,7 +97,8 @@ router.post("/editarAluno", (req, res) => {
         cpf: cpf,
         rg: rg,
         endereco: endereco,
-        curso, curso
+        curso, curso,
+        instituicaoId: instituicao
     }, {
         where: {
             id: id
@@ -117,13 +135,23 @@ router.post("/alunos/delete", (req, res) => {
 router.get("/consultarAluno/:id", (req, res) => {
     var id = req.params.id;
 
-    Aluno.findByPk(id).then(aluno => {
+    Aluno.findOne({
+        where: {
+            id: id,
+        }, 
+        include: [{
+            model: Instituicao,
+        }]
+    }).then(aluno => {
 
         if (isNaN(id)) {
             res.redirect("/alunos");
         }
+
         if (aluno != undefined) {
             res.render("consultarAluno", { aluno: aluno});
+
+
         } else {
             res.redirect("/alunos");
         }
@@ -131,6 +159,7 @@ router.get("/consultarAluno/:id", (req, res) => {
     }).catch(erro => {
         res.redirect("/alunos");
     });
+    
 })
 
 module.exports = router;

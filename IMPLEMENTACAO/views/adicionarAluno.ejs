@@ -16,55 +16,66 @@
 <body>
 
   <%- include ('partials/nav.ejs'); %>
-  
-  <form method="POST" action="/salvarAluno">
 
-    <div class="container">
+    <form method="POST" action="/salvarAluno">
 
-      <div class="col-sm-12">
-        <div class="col-sm-12" style="align-self: center;">
-          <div class="card">
-            <h5 class="card-header">Adicionar novo aluno</h5>
+      <div class="container">
 
-            <div class="form-group">
-              <label for="nomeAluno" style="padding: 5px;">Nome do aluno</label>
-              <input name="nome" type="text" class="form-control" id="nomeAluno" placeholder="Nome do aluno">
-            </div>
+        <div class="col-sm-12">
+          <div class="col-sm-12" style="align-self: center;">
+            <div class="card">
+              <h5 class="card-header">Adicionar novo aluno</h5>
 
-            <div class="form-group">
-              <label for="emailAluno" style="padding: 5px;">Email</label>
-              <input name="email" type="text" class="form-control" id="emailAluno" placeholder="Email">
-            </div>
+              <div class="form-group">
+                <label for="nomeAluno" style="padding: 5px;">Nome do aluno</label>
+                <input name="nome" type="text" class="form-control" id="nomeAluno" placeholder="Nome do aluno">
+              </div>
 
-            <div class="form-group">
-              <label for="cpfAluno" style="padding: 5px;">CPF</label>
-              <input name="cpf" type="text" class="form-control" id="cpfAluno" placeholder="CPF">
-            </div>
+              <div class="form-group">
+                <label for="emailAluno" style="padding: 5px;">Email</label>
+                <input name="email" type="text" class="form-control" id="emailAluno" placeholder="Email">
+              </div>
 
-            <div class="form-group">
-              <label for="rgAluno" style="padding: 5px;">RG</label>
-              <input name="rg" type="text" class="form-control" id="rgAluno" placeholder="RG">
-            </div>
+              <div class="form-group">
+                <label for="cpfAluno" style="padding: 5px;">CPF</label>
+                <input name="cpf" type="text" class="form-control" id="cpfAluno" placeholder="CPF">
+              </div>
 
-            <div class="form-group">
-              <label for="endAluno" style="padding: 5px;">Endereço</label>
-              <textarea name="endereco" class="form-control" name="" id="endAluno" cols="30" rows="2"></textarea>
-            </div>
+              <div class="form-group">
+                <label for="rgAluno" style="padding: 5px;">RG</label>
+                <input name="rg" type="text" class="form-control" id="rgAluno" placeholder="RG">
+              </div>
 
-            <div class="form-group">
-              <label for="cursoAluno" style="padding: 5px;">Curso</label>
-              <input name="curso" type="text" class="form-control" id="cursoAluno" placeholder="Curso">
-            </div>
+              <div class="form-group">
+                <label for="endAluno" style="padding: 5px;">Endereço</label>
+                <textarea name="endereco" class="form-control" name="" id="endAluno" cols="30" rows="2"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="cursoAluno" style="padding: 5px;">Curso</label>
+                <input name="curso" type="text" class="form-control" id="cursoAluno" placeholder="Curso">
+              </div>
+
+              <div class="form-group">
+                <label for="">Instituicao</label>
+                <select name="instituicao" class="form-control">
+                  <% instituicoes.forEach((instituicao)=> {%>
+                    <option value="<%= instituicao.id %>">
+                      <%= instituicao.nome %>
+                    </option>
+                  <% }) %>
+                </select>
+              </div>
 
 
-            <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
-              <button type="submit" class="btn btn-success">Adicionar</button>
+              <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
+                <button type="submit" class="btn btn-success">Adicionar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-  </form>
-  </div>
+    </form>
+    </div>
 </body>
 
 </html>
