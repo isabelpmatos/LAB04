@@ -114,8 +114,23 @@ router.post("/alunos/delete", (req, res) => {
     }
 });
 
-router.get("/consultarAluno", (req, res) => {
-    res.render("consultarAluno");
+router.get("/consultarAluno/:id", (req, res) => {
+    var id = req.params.id;
+
+    Aluno.findByPk(id).then(aluno => {
+
+        if (isNaN(id)) {
+            res.redirect("/alunos");
+        }
+        if (aluno != undefined) {
+            res.render("consultarAluno", { aluno: aluno});
+        } else {
+            res.redirect("/alunos");
+        }
+
+    }).catch(erro => {
+        res.redirect("/alunos");
+    });
 })
 
 module.exports = router;

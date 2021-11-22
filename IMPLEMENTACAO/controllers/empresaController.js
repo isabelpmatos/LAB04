@@ -94,8 +94,23 @@ router.post("/empresas/delete", (req, res) => {
     }
 });
 
-router.get("/consultarEmpresa", (req, res) => {
-    res.render("consultarEmpresa");
+router.get("/consultarEmpresa/:id", (req, res) => {
+    var id = req.params.id;
+
+    Empresa.findByPk(id).then(empresa => {
+
+        if (isNaN(id)) {
+            res.redirect("/empresasParceiras");
+        }
+        if (empresa  != undefined) {
+            res.render("consultarEmpresa", { empresa : empresa });
+        } else {
+            res.redirect("/empresasParceiras");
+        }
+
+    }).catch(erro => {
+        res.redirect("/empresasParceiras");
+    });
 })
 
 module.exports = router;
