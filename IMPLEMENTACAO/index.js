@@ -40,7 +40,9 @@ app.listen(5002, () => {
 //empresa
 
 app.get("/empresasParceiras", (req, res) =>{
-    res.render("empresasParceiras")
+    Empresa.findAll().then(empresas => {
+        res.render("empresasParceiras", {empresas: empresas});
+    })
 })
 
 app.get("/adicionarEmpresa", (req, res) =>{
@@ -77,7 +79,9 @@ app.get("/consultarEmpresa", (req, res) =>{
 //aluno
 
 app.get("/alunos", (req, res) =>{
-    res.render("alunos");
+    Aluno.findAll().then(alunos => {
+        res.render("alunos", {alunos: alunos});
+    })
 })
 
 app.get("/adicionarAluno", (req, res) =>{
