@@ -13,35 +13,35 @@
 </head>
 
 <body>
-  
+
   <%- include ('partials/nav.ejs'); %>
 
-  <form>
-    <div class="col-sm-12">
-    <div class="col-sm-6" style="align-self: center;">
-    <div class="card">
-        <h5 class="card-header">Editar Empresa</h5>
-        
-        <div class="form-group">
-        <label for="userEmpresa" style="padding: 5px;">User</label>
-        <input type="text" class="form-control" id="userEmpresa" aria-describedby="emailHelp" placeholder="User da Empresa">
+    <form method="POST" action="/editarEmpresa">
+
+      <div class="container">
+
+        <div class="col-sm-12">
+          <div class="col-sm-12" style="align-self: center;">
+            <div class="card">
+              <h5 class="card-header">Adicionar Empresa</h5>
+
+              <div class="form-group">
+                <label for="nomeEmpresa" style="padding: 5px;">Nome da Empresa</label>
+                <input name="nome" type="text" class="form-control" id="nomeEmpresa" aria-describedby="emailHelp"
+                  value="<%= empresa.nome %>">
+              </div>
+
+              <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
+                <input type="hidden" name="id" value="<%= empresa.id %>">
+                <button type="submit" class="btn btn-success">Atualizar</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="nomeEmpresa" style="padding: 5px;">Nome da Empresa</label>
-            <input type="text" class="form-control" id="nomeEmpresa" aria-describedby="emailHelp" placeholder="Nome da Empresa">
-        </div>
-        <div class="form-group">
-        <label for="senhaEmpresa" style="padding: 5px;">Senha</label>
-        <input type="password" class="form-control" id="senhaEmpresa" placeholder="Senha">
-        </div>
-        
-        <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
-            <button type="submit" class="btn btn-primary">Concluir Edição</button>
-        </div>
-    </div>
-    </div>
-    </div>
-  </form>
+
+      </div>
+    </form>
+
 </body>
 
 </html>

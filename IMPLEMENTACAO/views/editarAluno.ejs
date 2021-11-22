@@ -8,43 +8,64 @@
   <title>PUCoins - Editar Aluno</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/styleEditarAluno.css">
+  <link rel="stylesheet" href="/css/styleFormCadastro.css">
   <link rel="stylesheet" href="/css/nav.css">
   <link rel="icon" type="image/png" href="../public/imgs/coin.png">
 </head>
 
 <body>
-  
-  <%- include ('partials/nav.ejs'); %>
 
-  <div class=container>
-  <form>
-    <div class="col-sm-12">
-    <div class="col-sm-6" style="align-self: center;">
-    <div class="card">
-        <h5 class="card-header">Editar Aluno</h5>
-        
-        <div class="form-group">
-        <label for="codigoAluno" style="padding: 5px;">Código</label>
-        <input type="number" class="form-control" id="codigoAluno" placeholder="Novo código do aluno">
-        </div>
-        <div class="form-group">
-            <label for="nomeAluno" style="padding: 5px;">Nome do aluno</label>
-            <input type="text" class="form-control" id="nomeAluno" placeholder="Novo nome do aluno">
-        </div>
-        <div class="form-group">
-        <label for="senhaAluno" style="padding: 5px;">Senha</label>
-        <input type="password" class="form-control" id="senhaAluno" placeholder="Nova senha aluno">
-        </div>
-        
-        <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
-            <button type="submit" class="btn btn-success">Salvar</button>
-        </div>
+  <%- include ('partials/nav.ejs'); %>
+    
+      <form method="POST" action="/editarAluno">
+
+        <div class="container">
+
+          <div class="col-sm-12">
+            <div class="col-sm-12" style="align-self: center;">
+              <div class="card">
+                <h5 class="card-header">Adicionar novo aluno</h5>
+
+                <div class="form-group">
+                  <label for="nomeAluno" style="padding: 5px;">Nome do aluno</label>
+                  <input name="nome" type="text" class="form-control" id="nomeAluno" value="<%= aluno.nome %>">
+                </div>
+
+                <div class="form-group">
+                  <label for="emailAluno" style="padding: 5px;">Email</label>
+                  <input name="email" type="text" class="form-control" id="emailAluno" value="<%= aluno.email %>">
+                </div>
+
+                <div class="form-group">
+                  <label for="cpfAluno" style="padding: 5px;">CPF</label>
+                  <input name="cpf" type="text" class="form-control" id="cpfAluno" value="<%= aluno.cpf %>">
+                </div>
+
+                <div class="form-group">
+                  <label for="rgAluno" style="padding: 5px;">RG</label>
+                  <input name="rg" type="text" class="form-control" id="rgAluno" value="<%= aluno.rg %>">
+                </div>
+
+                <div class="form-group">
+                  <label for="endAluno" style="padding: 5px;">Endereço</label>
+                  <textarea name="endereco" class="form-control" name="" id="endAluno" cols="30" rows="2"><%= aluno.endereco %></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="cursoAluno" style="padding: 5px;">Curso</label>
+                  <input name="curso" type="text" class="form-control" id="cursoAluno" value="<%= aluno.curso %>">
+                </div>
+
+
+                <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
+                    <input type="hidden" name="id" value="<%= aluno.id %>">
+                    <button type="submit" class="btn btn-success">Atualizar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </form>
     </div>
-    </div>
-    </div>
-  </form>
-</div>
 </body>
 
 </html>

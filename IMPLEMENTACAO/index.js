@@ -39,13 +39,13 @@ app.listen(5002, () => {
 
 //empresa
 
-app.get("/empresasParceiras", (req, res) =>{
+app.get("/empresasParceiras", (req, res) => {
     Empresa.findAll().then(empresas => {
-        res.render("empresasParceiras", {empresas: empresas});
+        res.render("empresasParceiras", { empresas: empresas });
     })
 })
 
-app.get("/adicionarEmpresa", (req, res) =>{
+app.get("/adicionarEmpresa", (req, res) => {
     res.render("adicionarEmpresa");
 })
 
@@ -68,23 +68,57 @@ app.post("/salvarEmpresa", (req, res) => {
     }
 })
 
-app.get("/editarEmpresa", (req, res) => {
-    res.render("editarEmpresa");
+app.get("/empresas/edit/:id", (req, res) => {
+
+    var id = req.params.id;
+
+    Empresa.findByPk(id).then(empresa => {
+
+        if (isNaN(id)) {
+            res.redirect("/empresasParceiras");
+        }
+
+        if (empresa != undefined) {
+            res.render("editarEmpresa", { empresa: empresa });
+        } else {
+            res.redirect("/empresasParceiras");
+        }
+
+    }).catch(erro => {
+        res.redirect("/empresasParceiras");
+    });
+
+});
+
+app.post("/editarEmpresa", (req, res) => {
+
+    var id = req.body.id;
+    var nome = req.body.nome;
+
+    Empresa.update({
+        nome: nome,
+    }, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/empresasParceiras");
+    });
 })
 
-app.get("/consultarEmpresa", (req, res) =>{
+app.get("/consultarEmpresa", (req, res) => {
     res.render("consultarEmpresa");
 })
 
 //aluno
 
-app.get("/alunos", (req, res) =>{
+app.get("/alunos", (req, res) => {
     Aluno.findAll().then(alunos => {
-        res.render("alunos", {alunos: alunos});
+        res.render("alunos", { alunos: alunos });
     })
 })
 
-app.get("/adicionarAluno", (req, res) =>{
+app.get("/adicionarAluno", (req, res) => {
     res.render("adicionarAluno");
 })
 
@@ -117,10 +151,54 @@ app.post("/salvarAluno", (req, res) => {
     }
 })
 
-app.get("/editarAluno", (req, res) =>{
-    res.render("editarAluno");
+app.get("/alunos/edit/:id", (req, res) => {
+
+    var id = req.params.id;
+
+    Aluno.findByPk(id).then(aluno => {
+
+        if (isNaN(id)) {
+            res.redirect("/alunos");
+        }
+
+        if (aluno != undefined) {
+            res.render("editarAluno", { aluno: aluno });
+        } else {
+            res.redirect("/alunos");
+        }
+
+    }).catch(erro => {
+        res.redirect("/alunos");
+    });
+
+});
+
+app.post("/editarAluno", (req, res) => {
+
+    var id = req.body.id;
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var cpf = req.body.cpf;
+    var rg = req.body.rg;
+    var endereco = req.body.endereco;
+    var curso = req.body.curso;
+
+    Aluno.update({
+        nome: nome,
+        email: email,
+        cpf: cpf,
+        rg: rg,
+        endereco: endereco,
+        curso, curso
+    }, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/alunos");
+    });
 })
 
-app.get("/consultarAluno", (req, res) =>{
+app.get("/consultarAluno", (req, res) => {
     res.render("consultarAluno");
 })
