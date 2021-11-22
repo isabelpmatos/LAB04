@@ -13,7 +13,7 @@ nav{
     border-color: white; 
 } 
 
-.nav-list li a, .nav-list li .logout-button{ 
+.nav-list li a{ 
 
     letter-spacing: 3px; 
     font-size: 15px; 
@@ -28,11 +28,3 @@ nav{
 .nav-list li a:hover, .nav-list li .logout-button:hover{ 
     color:rgb(18, 34, 78) !important; 
 }  
-
-@media (max-width:992px){
-    .nav-list li a, .nav-list li .logout-button{
-        border-style: none;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-}
