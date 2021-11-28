@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUCoins - Moedas</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styleFormCadastro.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="icon" type="image/png" href="../public/imgs/coin.png">
+</head>
+
+<body>
+
+  <%- include ('partials/nav.ejs'); %>
+    
+      <form>
+
+        <div class="container">
+
+          <div class="col-sm-12">
+            <div class="col-sm-12" style="align-self: center;">
+              <div class="card">
+                <h5 class="card-header">Moedas</h5>
+
+                <div class="form-group">
+                  <label for="nomeAluno" style="padding: 5px;">Saldo</label>
+                  <label class="form-control">3,00</label>
+                </div>
+                <div class="form-group">
+                    <a href="/moedasTransferir">
+                        <button type="button" class="btn btn-primary" style="align-self: auto;">Transferir</button>
+                      </a>
+                      <a href="/moedasExtratoProfessor">
+                        <button type="button" class="btn btn-secondary" style="align-self: auto; background-color: gray;">Extrato</button>
+                      </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </form>
+    </div>
+</body>
+
+</html>

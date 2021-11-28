@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUCoins - Transferir</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styleFormCadastro.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="icon" type="image/png" href="../public/imgs/coin.png">
+</head>
+
+<body>
+
+  <%- include ('partials/nav.ejs'); %>
+    
+      <form>
+
+        <div class="container">
+
+          <div class="col-sm-12">
+            <div class="col-sm-12" style="align-self: center;">
+              <div class="card">
+                <h5 class="card-header">Transferir Moedas</h5>
+
+                <div class="form-group">
+                  <label for="quantia" style="padding: 5px;">Quantia</label>
+                  <input type="number" class="form-control form-control-md" name="quantia" min= "0" step=".01" data-required>
+                </div>
+                <div class="form-group">
+                    <label for="nomeAluno" class="col-sm-12" style="padding: 5px;">Aluno</label>
+                    <select class="form-control" aria-label="Default select example">
+                        <option selected>Selecione o Aluno</option>
+                        <option value="1">Daniel Aquino</option>
+                        <option value="2">Daniella Rodrigues</option>
+                        <option value="3">Isabel Matos</option>
+                    </select>                   
+                </div>
+                <div class="form-group">
+                    <a href="">
+                        <button type="button" class="btn btn-primary" style="align-self: auto;">Transferir</button>
+                      </a>
+                      <a href="/moedas">
+                        <button type="button" class="btn btn-secondary" style="align-self: auto; background-color: rgb(212, 0, 0);">Cancelar</button>
+                      </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </form>
+    </div>
+</body>
+
+</html>

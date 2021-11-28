@@ -36,6 +36,18 @@ app.get("/home", (req, res) => {
     res.render("home");
 })
 
+app.get("/moedas", (req, res) =>{
+    res.render("moedas");
+})
+
+app.get("/moedasExtratoProfessor", (req, res) =>{
+    res.render("moedasExtratoProfessor");
+})
+
+app.get("/moedasTransferir", (req, res) => {
+    res.render("moedasTransferir");
+})
+
 app.listen(5002, () => {
     console.log("Server is started")
 })
