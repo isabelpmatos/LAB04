@@ -48,6 +48,14 @@ app.get("/moedasTransferir", (req, res) => {
     res.render("moedasTransferir");
 })
 
+app.get("/login", (req, res) => {
+    res.render("login");
+})
+
+app.get("/index", (req, res) => {
+    res.render("index");
+})
+
 app.listen(5002, () => {
     console.log("Server is started")
 })
