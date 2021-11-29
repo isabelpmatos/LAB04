@@ -16,47 +16,58 @@
 <body>
 
   <%- include ('partials/nav.ejs'); %>
-    
-      <form>
 
-        <div class="container">
+    <form>
 
-          <div class="col-sm-12">
-            <div class="col-sm-12" style="align-self: center;">
-              <div class="card">
-                <h5 class="card-header">Extrato</h5>
-                <div class="row" style="padding: 10px;">
-                    <div class="col-sm-12">
-                      <table class="table table-striped table-light">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome do Aluno</th>
-                            <th scope="col">Valor</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-              
-                          <tr>
-                            <th scope="row">1.</th>
-                            <td>Daniel Aquino</td>
-                            <td>2,00</td>
-                          </tr>
-              
-              
-                        </tbody>
-                      </table>
-                    </div>
+      <div class="container">
+
+        <div class="col-sm-12">
+          <div class="col-sm-12" style="align-self: center;">
+            <div class="card">
+              <h5 class="card-header">Extrato</h5>
+              <div class="row" style="padding: 10px;">
+                <div class="col-sm-12">
+                  <table class="table table-striped table-light">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome do Aluno</th>
+                        <th scope="col">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <% alunos.forEach(aluno=> {%>
+
+                        <tr>
+                          <th scope="row">
+                            <%= aluno.id %>
+                          </th>
+                          <td>
+                            <%= aluno.nome %>
+                          </td>
+                          <td>
+                            <%= aluno.saldo %>
+                          </td>
+                        </tr>
+
+                      <% }); %>
+
+
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="form-group">
                 <a href="/moedas">
-                    <button type="button" class="btn btn-danger" style="align-self: auto; background-color: red;">Voltar</button>
-                    </a>
+                  <button type="button" class="btn btn-danger"
+                    style="align-self: auto; background-color: red;">Voltar</button>
+                </a>
               </div>
             </div>
-            
+
           </div>
-      </form>
+    </form>
     </div>
 </body>
 

@@ -7,6 +7,8 @@ const alunoController = require("./controllers/alunoController");
 const userController = require("./controllers/userController");
 const empresaController = require("./controllers/empresaController");
 
+const Aluno = require("./models/aluno");
+
 //carregar view engine
 app.set('view engine', 'ejs');
 
@@ -43,7 +45,9 @@ app.get("/moedas", (req, res) =>{
 })
 
 app.get("/moedasExtratoProfessor", (req, res) =>{
-    res.render("moedasExtratoProfessor");
+    Aluno.findAll().then(alunos => {
+        res.render("moedasExtratoProfessor", { alunos: alunos });
+    })
 })
 
 app.get("/moedasTransferir", (req, res) => {
