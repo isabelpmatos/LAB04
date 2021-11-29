@@ -48,7 +48,7 @@ body{
     margin-bottom: 12px;
 }
 
-.card-group > label{
+.form-group > label{
     width: 100%;
     color: white;
     display: block;

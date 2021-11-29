@@ -15,45 +15,53 @@
   
   <%- include ('partials/nav.ejs'); %>
 
-    
-
   <div class="below">
     <div class="container">
     
-        <form class="login" action="/api/usuario" method="POST">
+        <form class=" login " method="POST" action="/salvarUser">
 
-            <div class="card">
-                <div class="card-top">
-                    <h3 class="tittle">INSCREVA-SE</h3>
+            <div class="container">
+      
+              <div class="col-sm-12">
+                <div class="col-sm-12" style="align-self: center;">
+                  <div class="card">
+                    <div class="card-top">
+                        <h3 class="tittle">INSCREVA-SE</h3>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="nome" style="padding: 5px;">Nome completo</label>
+                      <input name="nome" type="text" class="form-control">
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="email" style="padding: 5px;">Email</label>
+                      <input name="email" type="text" class="form-control">
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="senha" style="padding: 5px;">Senha</label>
+                      <input name="senha" type="password" class="form-control">
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="">Tipos</label>
+                      <select name="instituicao" class="form-control">
+                        <% tipos.forEach((tipo)=> {%>
+                          <option value="<%= tipo.id %>">
+                            <%= tipo.nome %>
+                          </option>
+                        <% }) %>
+                      </select>
+                    </div>
+      
+                    <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
+                      <button type="submit" class="btn btn-login">Adicionar</button>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="card-group">
-                    <label>Nome Completo</label>
-                    <input type="text" name="name" id="nome" required>
-                </div>
-
-                <div class="card-group">
-                    <label>Email</label>
-                    <input type="email" name="email" id="email" required>
-                </div>               
-
-                <div class="card-group">
-                    <label>Senha</label>
-                    <input type="password" name="password" id="senha" required>
-                </div>
-
-                <div class="btn">
-                    <button class="btn-login" type="submit">Inscrever-se</button>
-                </div>
-
-                <div class="forms">
-                    <label>Já possui uma conta?</label>
-                    <a class="textoLoginParaCadastro" href="/login">Entrar!</a>
-                </div>
-
-
-            </div>
-        </form>
+              </div>
+          </form>
 
     </div>
 

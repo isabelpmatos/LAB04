@@ -4,6 +4,7 @@ const connection = require("./database/database");
 const bodyParser = require("body-parser"); //traduzir dados enviados em uma estrutura js
 
 const alunoController = require("./controllers/alunoController");
+const userController = require("./controllers/userController");
 const empresaController = require("./controllers/empresaController");
 
 //carregar view engine
@@ -27,9 +28,10 @@ connection
 
 app.use("/", alunoController);
 app.use("/", empresaController);
+app.use("/", userController);
 
 app.get("/", (req, res) => {
-    res.render("cadastro")
+    res.render("login")
 })
 
 app.get("/home", (req, res) => {

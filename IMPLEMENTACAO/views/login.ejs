@@ -19,22 +19,21 @@
         <div class="below">
 
             <div class="container">
-                <form class="login" action="/api/login" method="POST">
+                <form class="login" action="/login" method="POST">
         
                     <div class="card">
                         <div class="card-top">
                             <h3 class="tittle">LOGIN</h3>
                         </div>
         
-                        <div class="card-group">
+                        <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" id="email" required>
+                            <input class="form-control" type="email" name="email" id="email" required>
                         </div>
         
-                        <div class="card-group">
+                        <div class="form-group">
                             <label>Senha</label>
-                            <input type="password" name="password" id="senha" required>
-                            <a class="textoLoginParaCadastro" href="">Esqueceu a senha?</a>
+                            <input class="form-control" type="password" name="senha" id="senha" required>
                         </div>
         
                         <div class="btn">
@@ -43,7 +42,7 @@
         
                         <div class="forms">
                             <label>Não tem uma conta?</label>
-                            <a class="textoLoginParaCadastro" href="/">Cadastre-se!</a>
+                            <a class="textoLoginParaCadastro" href="/cadastroUser">Cadastre-se!</a>
                         </div>
         
                     </div>
