@@ -97,6 +97,25 @@ router.post("/transfere", (req, res) => {
             }).then(() => {
                 res.redirect("/moedas");
             });
+
+            Professor.update({
+                saldo: professor.saldo - valor
+            }, {
+                where: {
+                    nome: req.session.usuario.nome
+                }
+            })
+
+            Aluno.findOne({ where: { id: aluno } }).then(a => {
+
+                Aluno.update({
+                    saldo: a.saldo + valor
+                }, {
+                    where: {
+                        id: aluno
+                    }
+                })
+            })
         })
 
     } else {
