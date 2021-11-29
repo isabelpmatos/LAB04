@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const session = require("express-session")
 
 const User = require("../models/user");
-const Professor = require("../models/professor");
 const Aluno = require("../models/aluno");
+const Professor = require("../models/professor");
+
+router.use(session({
+    secret: "qqrcoisa", cookie: {maxAge: 3600000000}
+}));
 
 router.get("/cadastroUser", (req, res) => {
     res.render("index");
@@ -43,12 +48,17 @@ router.post("/login", (req, res) => {
 
     var email = req.body.email;
     var senha = req.body.senha;
-
+    
     User.findOne({ where: { email: email } }).then(usuario => {
 
         if (usuario != undefined) {
 
             if (senha = usuario.senha) {
+                req.session.usuario = {
+                    nome: usuario.nome,
+                    id: usuario.id,
+                    email: usuario.email
+                }
                 res.render("home");
             }
             else {
@@ -60,6 +70,12 @@ router.post("/login", (req, res) => {
         }
     })
 
+})
+
+router.get("/moedas", (req, res) =>{
+    Professor.findOne({where : { nome : req.session.usuario.nome }}).then(professor =>{
+        res.render("moedas", {professor: professor});
+    })
 })
 
 module.exports = router;

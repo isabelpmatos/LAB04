@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const connection = require("./database/database");
 const bodyParser = require("body-parser"); //traduzir dados enviados em uma estrutura js
+const session = require("express-session")
 
 const alunoController = require("./controllers/alunoController");
 const userController = require("./controllers/userController");
 const empresaController = require("./controllers/empresaController");
 
 const Aluno = require("./models/aluno");
+const Professor = require("./models/professor");
 
 //carregar view engine
 app.set('view engine', 'ejs');
@@ -17,6 +19,10 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: "qqrcoisa", cookie: {maxAge: 3600000000}
+}));
 
 //Database
 connection
@@ -36,12 +42,12 @@ app.get("/", (req, res) => {
     res.render("login")
 })
 
-app.get("/home", (req, res) => {
-    res.render("home");
+app.get("/cadastrar", (req, res) => {
+    res.render("cadastro")
 })
 
-app.get("/moedas", (req, res) =>{
-    res.render("moedas");
+app.get("/home", (req, res) => {
+    res.render("home");
 })
 
 app.get("/moedasExtratoProfessor", (req, res) =>{
