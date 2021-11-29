@@ -57,7 +57,9 @@ app.get("/moedasExtratoProfessor", (req, res) =>{
 })
 
 app.get("/moedasTransferir", (req, res) => {
-    res.render("moedasTransferir");
+    Aluno.findAll().then(alunos => {
+        res.render("moedasTransferir", { alunos: alunos });
+    })
 })
 
 app.get("/login", (req, res) => {

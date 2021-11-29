@@ -5,9 +5,10 @@ const session = require("express-session")
 const User = require("../models/user");
 const Aluno = require("../models/aluno");
 const Professor = require("../models/professor");
+const Transferencia = require("../models/transferencia");
 
 router.use(session({
-    secret: "qqrcoisa", cookie: {maxAge: 3600000000}
+    secret: "qqrcoisa", cookie: { maxAge: 3600000000 }
 }));
 
 router.get("/cadastroUser", (req, res) => {
@@ -48,7 +49,7 @@ router.post("/login", (req, res) => {
 
     var email = req.body.email;
     var senha = req.body.senha;
-    
+
     User.findOne({ where: { email: email } }).then(usuario => {
 
         if (usuario != undefined) {
@@ -72,10 +73,35 @@ router.post("/login", (req, res) => {
 
 })
 
-router.get("/moedas", (req, res) =>{
-    Professor.findOne({where : { nome : req.session.usuario.nome }}).then(professor =>{
-        res.render("moedas", {professor: professor});
+router.get("/moedas", (req, res) => {
+    Professor.findOne({ where: { nome: req.session.usuario.nome } }).then(professor => {
+        res.render("moedas", { professor: professor });
     })
 })
 
+router.post("/transfere", (req, res) => {
+
+    var aluno = req.body.aluno;
+    var valor = req.body.valor;
+
+    if (Transferencia != undefined) {
+
+        Professor.findOne({ where: { nome: req.session.usuario.nome } }).then(professor => {
+
+            Transferencia.create({
+
+                valor: valor,
+                alunoId: aluno,
+                professorId: professor.id,
+
+            }).then(() => {
+                res.redirect("/moedas");
+            });
+        })
+
+    } else {
+        res.redirect("/moedas");
+    }
+
+})
 module.exports = router;

@@ -6,11 +6,11 @@ const Instituicao = require("../models/instituicao");
 const Aluno = connection.define('aluno', {
     nome:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     email:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cpf:{
         type: Sequelize.STRING,
@@ -30,7 +30,7 @@ const Aluno = connection.define('aluno', {
     },
     saldo:{
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: true
     }
 });
 
