@@ -44,17 +44,6 @@
                       <input name="senha" type="password" class="form-control">
                     </div>
       
-                    <div class="form-group">
-                      <label for="">Tipos</label>
-                      <select name="instituicao" class="form-control">
-                        <% tipos.forEach((tipo)=> {%>
-                          <option value="<%= tipo.id %>">
-                            <%= tipo.nome %>
-                          </option>
-                        <% }) %>
-                      </select>
-                    </div>
-      
                     <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">
                       <button type="submit" class="btn btn-login">Adicionar</button>
                     </div>

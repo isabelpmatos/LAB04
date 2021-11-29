@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs')
 
 const User = require("../models/user");
-const Tipo = require("../models/tipo");
+const Professor = require("../models/professor");
+const Aluno = require("../models/aluno");
 
 router.get("/cadastroUser", (req, res) => {
-    Tipo.findAll().then(tipos => {
-        res.render("index", { tipos: tipos });
-    })
+    res.render("index");
 })
 
 router.post("/salvarUser", (req, res) => {
@@ -16,7 +14,6 @@ router.post("/salvarUser", (req, res) => {
     var nome = req.body.nome;
     var email = req.body.email;
     var senha = req.body.senha;
-    var tipo = req.body.tipo;
 
     if (User != undefined) {
 
@@ -25,10 +22,16 @@ router.post("/salvarUser", (req, res) => {
             nome: nome,
             email: email,
             senha: senha,
-            tipoId: tipo
+            tipo: "Aluno"
 
         }).then(() => {
             res.redirect("/login");
+        });
+
+        Aluno.create({
+            nome: nome,
+            email: email,
+            saldo: 0
         });
 
     } else {

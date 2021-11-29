@@ -6,16 +6,8 @@ const Professor = connection.define('professor', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    email:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    senha:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    tipo:{
-        type: Sequelize.STRING,
+    saldo:{
+        type: Sequelize.DOUBLE,
         allowNull: false
     }
 });

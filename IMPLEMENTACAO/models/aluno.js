@@ -14,19 +14,23 @@ const Aluno = connection.define('aluno', {
     },
     cpf:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     rg:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     endereco:{
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
     },
     curso:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    saldo:{
+        type: Sequelize.DOUBLE,
+        allowNull: false
     }
 });
 
