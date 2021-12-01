@@ -9,6 +9,16 @@ router.get("/empresasParceiras", (req, res) => {
     })
 })
 
+router.get("/empresasListar", (req, res) => {
+    Empresa.findAll().then(empresas => {
+        res.render("empresasListar", {empresas : empresas});
+    })
+})
+
+router.get("/vantagensEmpresa", (req, res) => {
+    res.render("vantagensEmpresa");
+})
+
 router.get("/adicionarEmpresa", (req, res) => {
     res.render("adicionarEmpresa");
 })

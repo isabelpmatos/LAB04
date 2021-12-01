@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUCoins - Empresas e Vantagens</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styleHome.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="icon" type="image/png" href="../public/imgs/coin.png">
+</head>
+
+<body>
+
+  <%- include ('partials/nav.ejs'); %>
+
+    <div class="row" style="padding: 10px; text-align: center;">
+        <div class="col-sm-12">
+          <h1 style="color: white;">Selecione uma empresa</h1>
+        </div>
+      </div>
+
+    <div class="row" style="padding: 10px;">
+      <div class="col-sm-12">
+        <table class="table table-striped table-light">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% empresas.forEach(empresa=> {%>
+
+              <tr>
+                <th scope="row"><%= empresa.id %></th>
+                <td>
+                  <%= empresa.nome %>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        <a href="/vantagensEmpresa" style="text-decoration: none; padding-right: 5px; color: black;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+                            </svg>
+                        </a>
+                        Vantagens
+                    </button>
+                </td>
+              </tr>
+
+              <% }); %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+</body>
+</html>
