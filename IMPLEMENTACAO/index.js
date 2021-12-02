@@ -70,6 +70,26 @@ app.get("/index", (req, res) => {
     res.render("index");
 })
 
+app.get("/cadastroVantagens", (req, res) => {
+    res.render("cadastroVantagens");
+})
+
 app.listen(5002, () => {
     console.log("Server is started")
 })
+
+app.post('/cadastroVantagem', (req, res, next) => {
+  const formidable = require('formidable');
+  const fs = require('fs');
+  const form = new formidable.IncomingForm();
+ 
+  form.parse(req, (err, fields, files) => {
+ 
+    const path = require('path');
+    const oldpath = files.filetoupload.path;
+    const newpath = path.join(__dirname, '..', files.filetoupload.name);
+    
+    fs.renameSync(oldpath, newpath);
+    res.send('File uploaded and moved!');
+  });
+});
