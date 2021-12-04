@@ -74,6 +74,10 @@ app.get("/cadastroVantagens", (req, res) => {
     res.render("cadastroVantagens");
 })
 
+app.get("/viewVantagens", (req, res) => {
+    res.render("viewVantagens");
+})
+
 app.listen(5002, () => {
     console.log("Server is started")
 })

@@ -1,0 +1,33 @@
+body{
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif !important;
+    background-size: cover;
+    background-image: url(../imgs/fullhd.png);
+}
+
+.container{
+    margin-right: 50px;
+}
+.card{
+    margin-top: 50px;
+    background-color: #42adfe71!important;
+    padding: 20px;
+    border-radius: 3px !important;
+    border-color: white !important;
+    border-style: solid;
+    border-width: 3px;
+    width: 110%;
+    display:inline-block;
+}
+
+.btn{
+    background-color: #42adfe71;
+    border-color: white !important;
+    border-width: 3px;
+}
+
+.btn:hover{
+    background-color: #42adfe71;
+    border-color: white!important;
+    border-width: 3px;
+}
+
