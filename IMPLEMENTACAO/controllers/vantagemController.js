@@ -1,20 +1,26 @@
 const express = require("express");
 const router = express.Router();
+const session = require("express-session")
 
 const Vantagem = require("../models/vantagem");
 const Empresa = require("../models/empresa");
+const Aluno = require("../models/aluno");
+
+router.use(session({
+    secret: "qqrcoisa", cookie: { maxAge: 3600000000 }
+}));
 
 router.get("/cadastroVantagens", (req, res) => {
     Empresa.findAll().then(empresas => {
-        res.render("cadastroVantagens", {empresas: empresas});
+        res.render("cadastroVantagens", { empresas: empresas });
     })
 })
 
 router.get("/viewVantagens", (req, res) => {
     Vantagem.findAll({
-        include: ({model: Empresa})
+        include: ({ model: Empresa })
     }).then(vantagens => {
-        res.render("viewVantagens", {vantagens: vantagens});
+        res.render("viewVantagens", { vantagens: vantagens });
     })
 })
 
@@ -23,13 +29,13 @@ router.post('/salvarVantagem', (req, res, next) => {
     // const formidable = require('formidable');
     // const fs = require('fs');
     // const form = new formidable.IncomingForm();
-   
+
     // form.parse(req, (err, fields, files) => {
-   
+
     //   const path = require('path');
     //   const oldpath = files.filetoupload.path;
     //   const newpath = path.join(__dirname, '..', files.filetoupload.name);
-      
+
     //   fs.renameSync(oldpath, newpath);
     //   res.send('File uploaded and moved!');
     // });
@@ -57,5 +63,29 @@ router.post('/salvarVantagem', (req, res, next) => {
     }
 
 });
+
+router.post("/vantagens/resgatar/:id", (req, res) => {
+
+    var id = req.params.id;
+
+    Aluno.findOne({ where: { nome: req.session.usuario.nome } }).then(aluno => {
+
+        Vantagem.findByPk(id).then(vantagem => {
+
+            Aluno.update({
+                saldo: aluno.saldo - vantagem.preco
+            }, {
+                where: {
+                    nome: req.session.usuario.nome
+                }
+            }).then(() => {
+                res.redirect("/viewVantagens");
+            });
+
+        })
+
+    })
+
+})
 
 module.exports = router;

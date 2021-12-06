@@ -37,7 +37,8 @@ router.post("/salvarUser", (req, res) => {
         Aluno.create({
             nome: nome,
             email: email,
-            saldo: 0
+            saldo: 0,
+            instituicaoId: 1,
         });
 
     } else {

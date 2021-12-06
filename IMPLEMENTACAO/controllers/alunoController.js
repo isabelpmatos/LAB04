@@ -36,7 +36,8 @@ router.post("/salvarAluno", (req, res) => {
             rg: rg,
             endereco: endereco,
             curso, curso,
-            instituicaoId: instituicao
+            instituicaoId: instituicao,
+            saldo: 0
 
         }).then(() => {
             res.redirect("/alunos");
@@ -99,6 +100,7 @@ router.post("/editarAluno", (req, res) => {
         endereco: endereco,
         curso, curso,
         instituicaoId: instituicao
+
     }, {
         where: {
             id: id
