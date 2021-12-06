@@ -75,9 +75,18 @@ router.post("/login", (req, res) => {
 })
 
 router.get("/moedas", (req, res) => {
+
     Professor.findOne({ where: { nome: req.session.usuario.nome } }).then(professor => {
-        res.render("moedas", { professor: professor });
+        if(professor != undefined) {
+            res.render("moedas", { professor: professor });
+        }else{
+            Aluno.findOne({ where: { nome: req.session.usuario.nome } }).then(aluno => {
+                res.render("moedasAluno", { aluno: aluno });
+            })
+        }
+        
     })
+
 })
 
 router.post("/transfere", (req, res) => {
