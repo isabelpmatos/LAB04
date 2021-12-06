@@ -8,7 +8,9 @@ router.get("/cadastroVantagens", (req, res) => {
 })
 
 router.get("/viewVantagens", (req, res) => {
-    res.render("viewVantagens");
+    Vantagem.findAll().then(vantagens => {
+        res.render("viewVantagens", {vantagens: vantagens});
+    })
 })
 
 router.post('/salvarVantagem', (req, res, next) => {

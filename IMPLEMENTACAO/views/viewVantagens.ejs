@@ -15,44 +15,30 @@
   
   <%- include ('partials/navAluno.ejs'); %>
 
+  <div class="row" style="padding: 10px; text-align: center;">
+    <div class="col-sm-12">
+      <a href="/cadastroVantagens">
+        <button type="button" class="btn" style="align-self: auto;">Adicionar Vantagem</button>
+      </a>
+    </div>
+  </div>
+
   <div class="container">
 
+  <% vantagens.forEach(vantagem=> {%>
+
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <img src="/imgs/quadro.png" class="card-img-top" alt="...">
-      <h5 class="card-title">Nome</h5>
-      <p class="card-text">Descrição</p>
-      <p class="card-text">Empresa</p>
-      <p class="card-text">Preço</p>
+      <h5 class="card-title"><%= vantagem.nome %></h5>
+      <p class="card-text">Descrição: <%= vantagem.descricao %></p>
+      <p class="card-text">Empresa: Empresa</p>
+      <p class="card-text">Preco: <%= vantagem.preco %></p>
       <a href="#" class="btn btn-primary">Resgatar</a>
     </div>
   </div>
 
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <img src="/imgs/quadro.png" class="card-img-top" alt="...">
-      <h5 class="card-title">Nome</h5>
-      <p class="card-text">Descrição</p>
-      <p class="card-text">Empresa</p>
-      <p class="card-text">Preço</p>
-      <a href="#" class="btn btn-primary">Resgatar</a>
-    </div>
-  </div>
-
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <img src="/imgs/quadro.png" class="card-img-top" alt="...">
-      <h5 class="card-title">Nome</h5>
-      <p class="card-text">Descrição</p>
-      <p class="card-text">Empresa</p>
-      <p class="card-text">Preço</p>
-      <a href="#" class="btn btn-primary">Resgatar</a>
-    </div>
-  </div>
-
-
+  <% }); %>
         
 </div>
     
