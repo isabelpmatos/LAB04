@@ -16,11 +16,19 @@ router.get("/cadastroVantagens", (req, res) => {
     })
 })
 
-router.get("/viewVantagens", (req, res) => {
-    Vantagem.findAll({
-        include: ({ model: Empresa })
-    }).then(vantagens => {
-        res.render("viewVantagens", { vantagens: vantagens });
+router.get("/consultarVantagens/:id", (req, res) => {
+
+    var id = req.params.id;
+
+    Vantagem.findOne({
+        where: {
+            id: id,
+        }, 
+        include: [{
+            model: Empresa,
+        }]
+    }).then(vantagem => {
+        res.render("viewVantagens", { vantagem: vantagem });
     })
 })
 
