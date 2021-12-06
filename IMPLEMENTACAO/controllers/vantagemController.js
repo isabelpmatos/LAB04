@@ -2,13 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 const Vantagem = require("../models/vantagem");
+const Empresa = require("../models/empresa");
 
 router.get("/cadastroVantagens", (req, res) => {
-    res.render("cadastroVantagens");
+    Empresa.findAll().then(empresas => {
+        res.render("cadastroVantagens", {empresas: empresas});
+    })
 })
 
 router.get("/viewVantagens", (req, res) => {
-    Vantagem.findAll().then(vantagens => {
+    Vantagem.findAll({
+        include: ({model: Empresa})
+    }).then(vantagens => {
         res.render("viewVantagens", {vantagens: vantagens});
     })
 })
@@ -32,6 +37,7 @@ router.post('/salvarVantagem', (req, res, next) => {
     var nome = req.body.nome;
     var descricao = req.body.descricao;
     var preco = req.body.preco;
+    var empresa = req.body.empresa;
 
     if (Vantagem != undefined) {
 
@@ -39,7 +45,8 @@ router.post('/salvarVantagem', (req, res, next) => {
 
             nome: nome,
             descricao: descricao,
-            preco: preco
+            preco: preco,
+            empresaId: empresa
 
         }).then(() => {
             res.redirect("/viewVantagens");
