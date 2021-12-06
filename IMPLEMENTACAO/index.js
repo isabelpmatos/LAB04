@@ -7,9 +7,9 @@ const session = require("express-session")
 const alunoController = require("./controllers/alunoController");
 const userController = require("./controllers/userController");
 const empresaController = require("./controllers/empresaController");
+const vantagemController = require("./controllers/vantagemController");
 
 const Aluno = require("./models/aluno");
-const Professor = require("./models/professor");
 
 //carregar view engine
 app.set('view engine', 'ejs');
@@ -37,6 +37,7 @@ connection
 app.use("/", alunoController);
 app.use("/", empresaController);
 app.use("/", userController);
+app.use("/", vantagemController);
 
 app.get("/", (req, res) => {
     res.render("login")
@@ -70,30 +71,6 @@ app.get("/index", (req, res) => {
     res.render("index");
 })
 
-app.get("/cadastroVantagens", (req, res) => {
-    res.render("cadastroVantagens");
-})
-
-app.get("/viewVantagens", (req, res) => {
-    res.render("viewVantagens");
-})
-
 app.listen(5002, () => {
     console.log("Server is started")
 })
-
-app.post('/cadastroVantagem', (req, res, next) => {
-  const formidable = require('formidable');
-  const fs = require('fs');
-  const form = new formidable.IncomingForm();
- 
-  form.parse(req, (err, fields, files) => {
- 
-    const path = require('path');
-    const oldpath = files.filetoupload.path;
-    const newpath = path.join(__dirname, '..', files.filetoupload.name);
-    
-    fs.renameSync(oldpath, newpath);
-    res.send('File uploaded and moved!');
-  });
-});
