@@ -79,13 +79,41 @@ router.post("/vantagens/resgatar/:id", (req, res) => {
                     nome: req.session.usuario.nome
                 }
             }).then(() => {
-                res.redirect("/viewVantagens");
+                res.redirect("/empresasListar");
             });
 
         })
 
     })
 
+})
+
+router.get("/vantagensEmpresa/:id", (req, res) => {
+
+    var empresaId = req.params.id;
+
+    Vantagem.findAll({
+        where: {
+            empresaId: empresaId
+        }, 
+        include: [{
+            model: Empresa,
+        }]
+
+    }).then(vantagens => {
+
+        if (vantagens != undefined) {
+            Empresa.findByPk(empresaId).then(empresa => {
+                res.render("vantagensEmpresa", { vantagens: vantagens, empresa: empresa});
+            })
+        } else {
+            res.redirect("/empresasListar");
+        }
+    })
+})
+
+router.get("/empresasListar", (req, res) => {
+    res.render("empresasListar");
 })
 
 module.exports = router;

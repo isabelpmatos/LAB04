@@ -18,10 +18,18 @@
   <%- include ('partials/nav.ejs'); %>
 
     <div class="row" style="padding: 10px; text-align: center;">
-        <div class="col-sm-12">
-          <h1 style="color: white;">Selecione uma empresa</h1>
-        </div>
+      <div class="col-sm-12">
+        <a href="/cadastroVantagens">
+          <button type="button" class="btn" style="align-self: auto;">Adicionar Vantagem</button>
+        </a>
       </div>
+    </div>
+
+    <div class="row" style="padding: 10px; text-align: center;">
+      <div class="col-sm-12">
+        <h1 style="color: white;">Selecione uma empresa</h1>
+      </div>
+    </div>
 
     <div class="row" style="padding: 10px;">
       <div class="col-sm-12">
@@ -38,19 +46,22 @@
             <% empresas.forEach(empresa=> {%>
 
               <tr>
-                <th scope="row"><%= empresa.id %></th>
+                <th scope="row">
+                  <%= empresa.id %>
+                </th>
                 <td>
                   <%= empresa.nome %>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary">
-                        <a href="/vantagensEmpresa" style="text-decoration: none; padding-right: 5px; color: black;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
-                            </svg>
-                        </a>
-                        Vantagens
-                    </button>
+                  <a href="/vantagensEmpresa/<%= empresa.id %>" class="texto-vantagem btn btn-primary"
+                    style="text-decoration: none; padding-right: 5px; color: black;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                    </svg>
+                    <h7>Vantagens</h7>
+                  </a>
                 </td>
               </tr>
 
@@ -61,4 +72,5 @@
       </div>
     </div>
 </body>
+
 </html>

@@ -28,3 +28,7 @@ nav{
 .nav-list li a:hover, .nav-list li .logout-button:hover{ 
     color:rgb(18, 34, 78) !important; 
 }  
+
+.texto-vantagem h7{
+    color: white;
+}
