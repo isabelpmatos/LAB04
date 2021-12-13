@@ -63,7 +63,7 @@ router.post('/salvarVantagem', (req, res, next) => {
             empresaId: empresa
 
         }).then(() => {
-            res.redirect("/viewVantagens");
+            res.redirect("/empresasListar");
         });
 
     } else {
